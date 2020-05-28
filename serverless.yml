@@ -61,7 +61,9 @@ functions:
   hello:
     handler: handler.hello
     environment:
-     TFANDKUSU_SLACK_API_KEY: ${ssm:/TFANDKUSU_SLACK_API_KEY}
+      TFANDKUSU_SLACK_API_KEY: ${ssm:/TFANDKUSU_SLACK_API_KEY}
+    events:
+      - schedule: cron(56 11 * * ? *) # UTC
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
