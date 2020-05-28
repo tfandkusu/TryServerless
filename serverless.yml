@@ -60,6 +60,9 @@ provider:
 functions:
   hello:
     handler: handler.hello
+    environment:
+     TFANDKUSU_SLACK_API_KEY: ${ssm:/TFANDKUSU_SLACK_API_KEY}
+
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
@@ -96,10 +99,6 @@ functions:
 #            host: example.com
 #            path: /hello
 
-#    Define function environment variables here
-#    environment:
-#      variable2: value2
-
 # you can add CloudFormation resource templates here
 #resources:
 #  Resources:
@@ -111,3 +110,9 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
